@@ -4,8 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
-    "test:staged": "jest"
+    "test": "jest --passWithNoTests",
+    "test:staged": "jest --passWithNoTests",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@types/jest": "^26.0.23",
