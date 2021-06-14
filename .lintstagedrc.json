@@ -1,0 +1,6 @@
+{
+    "*.ta": [
+        "eslint 'src/**' --fix",
+        "git add"
+    ]
+}
