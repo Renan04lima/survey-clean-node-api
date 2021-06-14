@@ -1,6 +1,3 @@
-// 20210614101745
-// https://raw.githubusercontent.com/rmanguinho/clean-ts-api/master/tsconfig.json
-
 {
     "compilerOptions": {
       "outDir": "dist",
