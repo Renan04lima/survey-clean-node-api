@@ -1,8 +1,5 @@
-import { AccountModel } from '@/domain/model/account'
-import { AddAccount, AddAccountModel } from '@/domain/usecases/add-account'
-import { resolve } from 'path'
-import { MissingParamError, InvalidParamError, ServerError } from '../errors'
-import { EmailValidator } from '../protocols/email-validator'
+import { AddAccount, AddAccountModel, AccountModel, EmailValidator } from './signup-protocols'
+import { MissingParamError, InvalidParamError, ServerError } from '../../errors'
 
 import SignUpController from './signup'
 // sut: Subject Under Testing
@@ -18,6 +15,7 @@ const makeEmailValidator = (): EmailValidator => {
 
 const makeAddAccount = (): AddAccount => {
   class AddAccountStub implements AddAccount {
+    // AddAccountModel possui alguns campos do AccountModel, porque não é recomendado usar o AccountModel com campos opcionais, já que ele faz parte do domain(regra de negócio)
     async add(account: AddAccountModel): Promise<AccountModel> {
       const fakeAccount = {
         id: 'valid_id',
