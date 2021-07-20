@@ -37,4 +37,19 @@ describe('DbAddAccount Usecase', () => {
     await sut.add(accountData)
     expect(encryptSpy).toHaveBeenCalledWith('valid_password')
   })
+
+  // garantindo que o erro não vai ser tratado aqui(com try catch), e sim repassado para a presentation para ser tratado lá com o serverError()
+  test('should throw if Encrypter throws', async () => {
+    const { encryptStub, sut } = makeSut()
+
+    // mockando para a dependencia do sut retornar uma execessão
+    jest.spyOn(encryptStub, 'encrypt').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
+    const accountData = {
+      name: 'valid_name',
+      email: 'valid_email',
+      password: 'valid_password'
+    }
+    const promise = sut.add(accountData)
+    await expect(promise).rejects.toThrow()
+  })
 })
