@@ -30,4 +30,17 @@ describe('Bcrypt Adapter', () => {
 
     expect(hash).toBe('hash')
   })
+
+  test('should throw if bcrypt throws', async () => {
+    const sut = makeSut()
+
+    // Você fez certo. Esse método tem diversas sobrecargas, por isso fica difícil mockar ele com o mockReturnValue. O compilador pensa que você quer mockar alguma das possíveis sobrecargas desse método. Com o mockImplementation você fica livre pra mockar como quiser.
+    // jest.spyOn(bcrypt, 'hash').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
+    jest.spyOn(bcrypt, 'hash').mockImplementationOnce(() => {
+      throw new Error()
+    })
+    const promise = sut.encrypt('any_value')
+
+    await expect(promise).rejects.toThrow()
+  })
 })
