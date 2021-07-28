@@ -3,3 +3,4 @@ dist
 .vscode
 .husky
 coverage
+globalConfig.json
