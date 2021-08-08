@@ -1,0 +1,25 @@
+version: "3"
+services: 
+  mongo:
+    container_name: mongo-container
+    image: mongo:3
+    restart: always
+    # mapear os dados do meu local e do docker para não perder os dados quando a imagem for reiniciada
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+  api:
+    container_name: api_container
+    # executa o Dockerfile
+    build: .
+    # nome da imagem
+    image: clean-node-api
+    restart: always
+    command: npm start
+    volumes:
+      - ./dist:/usr/src/clean-node-api/dist
+    ports:
+      - "5050:5050"
+    links:
+      - mongo
