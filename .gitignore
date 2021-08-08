@@ -4,3 +4,4 @@ dist
 .husky
 coverage
 globalConfig.json
+data
