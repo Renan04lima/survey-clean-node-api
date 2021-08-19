@@ -13,7 +13,7 @@ const makeSut = (): BcryptAdapter => {
 }
 
 describe('Bcrypt Adapter', () => {
-  // integração entre componentes
+  // NOTE - integração entre componentes
   test('should call bcrypt with correct values', async () => {
     const sut = makeSut()
 
@@ -34,8 +34,8 @@ describe('Bcrypt Adapter', () => {
   test('should throw if bcrypt throws', async () => {
     const sut = makeSut()
 
-    // Você fez certo. Esse método tem diversas sobrecargas, por isso fica difícil mockar ele com o mockReturnValue. O compilador pensa que você quer mockar alguma das possíveis sobrecargas desse método. Com o mockImplementation você fica livre pra mockar como quiser.
-    // jest.spyOn(bcrypt, 'hash').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
+    // NOTE - Você fez certo. Esse método tem diversas sobrecargas, por isso fica difícil mockar ele com o mockReturnValue. O compilador pensa que você quer mockar alguma das possíveis sobrecargas desse método. Com o mockImplementation você fica livre pra mockar como quiser.
+    // NOTE - jest.spyOn(bcrypt, 'hash').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
     jest.spyOn(bcrypt, 'hash').mockImplementationOnce(() => {
       throw new Error()
     })

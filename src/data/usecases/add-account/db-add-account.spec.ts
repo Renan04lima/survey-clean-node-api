@@ -12,7 +12,7 @@ const makeEncrypter = (): Encrypter => {
 
 const makeAddAccountRepository = (): AddAccountRepository => {
   class AddAccountRepositoryStub implements AddAccountRepository {
-    // replicar seria uma solução de arquitetura pq o data não pode "vê" o domain
+    // NOTE - replicar seria uma solução de arquitetura pq o data não pode "vê" o domain
     async add(accountData: AddAccountModel): Promise<AccountModel> {
       return new Promise(resolve => resolve(makeFakeAccount()))
     }
@@ -61,11 +61,11 @@ describe('DbAddAccount Usecase', () => {
     expect(encryptSpy).toHaveBeenCalledWith('valid_password')
   })
 
-  // garantindo que o erro não vai ser tratado aqui(com try catch), e sim repassado para a presentation para ser tratado lá com o serverError()
+  // NOTE - garantindo que o erro não vai ser tratado aqui(com try catch), e sim repassado para a presentation para ser tratado lá com o serverError()
   test('should throw if Encrypter throws', async () => {
     const { encryptStub, sut } = makeSut()
 
-    // mockando para a dependencia do sut retornar uma execessão
+    // NOTE - mockando para a dependencia do sut retornar uma execessão
     jest.spyOn(encryptStub, 'encrypt').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
 
     const promise = sut.add(makeFakeAccountData())
@@ -88,7 +88,7 @@ describe('DbAddAccount Usecase', () => {
   test('should throw if addAccountRepository throws', async () => {
     const { addAccountRepositoryStub, sut } = makeSut()
 
-    // mockando para a dependencia do sut retornar uma execessão
+    // NOTE - mockando para a dependencia do sut retornar uma execessão
     jest.spyOn(addAccountRepositoryStub, 'add').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
 
     const promise = sut.add(makeFakeAccountData())

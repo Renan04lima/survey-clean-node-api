@@ -1,9 +1,9 @@
 import { Collection, MongoClient } from 'mongodb'
 
 export const MongoHelper = {
-  // forçando o typescript não conflitar com a sintaxe dos objetos do js
+  // NOTE - forçando o typescript não conflitar com a sintaxe dos objetos do js
   client: null as MongoClient,
-  // singleton: retorna um objeto direto, ou seja, não criamos várias instâncias dessa classe
+  // NOTE - singleton: retorna um objeto direto, ou seja, não criamos várias instâncias dessa classe
   uri: null as string,
 
   async connect(uri: string): Promise<void> {

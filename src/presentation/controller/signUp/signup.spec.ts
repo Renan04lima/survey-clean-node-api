@@ -4,7 +4,7 @@ import { MissingParamError, InvalidParamError, ServerError } from '../../errors'
 import SignUpController from './signup'
 import { HttpRequest } from '@/presentation/protocols'
 import { badRequest, ok, serverError } from '@/presentation/helpers'
-// sut: Subject Under Testing
+// NOTE - sut: Subject Under Testing
 
 const makeEmailValidator = (): EmailValidator => {
   class EmailValidatorStub implements EmailValidator {
@@ -17,7 +17,7 @@ const makeEmailValidator = (): EmailValidator => {
 
 const makeAddAccount = (): AddAccount => {
   class AddAccountStub implements AddAccount {
-    // AddAccountModel possui alguns campos do AccountModel, porque não é recomendado usar o AccountModel com campos opcionais, já que ele faz parte do domain(regra de negócio)
+    // NOTE - AddAccountModel possui alguns campos do AccountModel, porque não é recomendado usar o AccountModel com campos opcionais, já que ele faz parte do domain(regra de negócio)
     async add(account: AddAccountModel): Promise<AccountModel> {
       return new Promise((resolve) => resolve(makeFakeAccount()))
     }

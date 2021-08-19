@@ -1,7 +1,7 @@
 import { EmailValidatorAdapter } from './email-validator-adapter'
 import validator from 'validator'
 
-// Mock functions are also very effective in code that uses a functional continuation-passing style. Code written in this style helps avoid the need for complicated stubs that recreate the behavior of the real component they're standing in for, in favor of injecting values directly into the test right before they're used.
+// NOTE - Mock functions are also very effective in code that uses a functional continuation-passing style. Code written in this style helps avoid the need for complicated stubs that recreate the behavior of the real component they're standing in for, in favor of injecting values directly into the test right before they're used.
 jest.mock('validator', () => ({
   isEmail() {
     return true

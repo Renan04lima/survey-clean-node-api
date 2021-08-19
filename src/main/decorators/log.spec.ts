@@ -47,7 +47,7 @@ const makeFakeServerError = (): HttpResponse => {
 interface SutTypes {
   sut: LogControllerDecorator
   controllerStub: Controller
-  // crie a interface junto a camada que precisa dela, mas nesse caso é melhor por no data layer para o infra consumi-lo
+  // NOTE - crie a interface junto a camada que precisa dela, mas nesse caso é melhor por no data layer para o infra consumi-lo
   logErrorRepositoryStub: LogErrorRepository
 }
 
@@ -66,7 +66,7 @@ const makeSut = (): SutTypes => {
 describe('Log Controller Test', () => {
   test('should call controller handle', async () => {
     const { controllerStub, sut } = makeSut()
-    const handleSpy = jest.spyOn(controllerStub, 'handle') // spy para saber se o LogController chamou o ControllerStub
+    const handleSpy = jest.spyOn(controllerStub, 'handle') // NOTE - spy para saber se o LogController chamou o ControllerStub
 
     await sut.handle(makeFakeRequest())
     expect(handleSpy).toHaveBeenCalledWith(makeFakeRequest())
