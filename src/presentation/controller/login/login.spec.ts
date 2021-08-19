@@ -1,5 +1,5 @@
 import { InvalidParamError, MissingParamError } from '@/presentation/errors'
-import { badRequest } from '@/presentation/helpers'
+import { badRequest, serverError } from '@/presentation/helpers'
 import { HttpRequest } from '@/presentation/protocols'
 import { EmailValidator } from '@/presentation/protocols/email-validator'
 import { LoginController } from './login'
@@ -73,5 +73,14 @@ describe('Login Controller', () => {
 
     await sut.handle(makeFakeRequest())
     expect(isValidSpy).toHaveBeenLastCalledWith('any_email@mail.com')
+  })
+
+  test('should return 500 if EmailValidator throws', async () => {
+    const { sut, emailValidatorStub } = makeSut()
+    // NOTE - mockReturnValueOnce não funciona pq ele é tipado pelo typescript
+    jest.spyOn(emailValidatorStub, 'isValid').mockImplementationOnce(() => { throw new Error() })
+
+    const httpResponse = await sut.handle(makeFakeRequest())
+    expect(httpResponse).toEqual(serverError(new Error()))
   })
 })
