@@ -1,6 +1,6 @@
 import { Authentication } from '@/domain/usecases/authentication'
 import { InvalidParamError, MissingParamError } from '@/presentation/errors'
-import { badRequest, serverError, unauthorized } from '@/presentation/helpers'
+import { badRequest, ok, serverError, unauthorized } from '@/presentation/helpers'
 import { HttpRequest } from '@/presentation/protocols'
 import { EmailValidator } from '@/presentation/protocols/email-validator'
 import { LoginController } from './login'
@@ -120,5 +120,12 @@ describe('Login Controller', () => {
 
     const httpResponse = await sut.handle(makeFakeRequest())
     expect(httpResponse).toEqual(serverError(new Error()))
+  })
+
+  test('should return 200 if valid credencials are provided', async () => {
+    const { sut } = makeSut()
+
+    const httpResponse = await sut.handle(makeFakeRequest())
+    expect(httpResponse).toEqual(ok({ accessToken: 'any_token' }))
   })
 })
