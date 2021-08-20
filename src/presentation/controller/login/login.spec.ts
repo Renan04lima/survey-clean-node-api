@@ -1,10 +1,6 @@
 import { Authentication } from '@/domain/usecases/authentication'
 import { InvalidParamError, MissingParamError } from '@/presentation/errors'
-<<<<<<< HEAD
 import { badRequest, serverError, unauthorized } from '@/presentation/helpers'
-=======
-import { badRequest } from '@/presentation/helpers'
->>>>>>> 2b1b54b5ea7470c538491dcb361ebbc83162a4d3
 import { HttpRequest } from '@/presentation/protocols'
 import { EmailValidator } from '@/presentation/protocols/email-validator'
 import { LoginController } from './login'
@@ -40,13 +36,6 @@ const makeAuthentication = (): Authentication => {
 
   return new AuthenticationStub()
 }
-
-const makeFakeRequest = (): HttpRequest => ({
-  body: {
-    email: 'any_email@mail.com',
-    password: 'any_password'
-  }
-})
 
 const makeSut = (): SutTypes => {
   const emailValidatorStub = makeEmailValidator()
@@ -123,5 +112,13 @@ describe('Login Controller', () => {
 
     const httpResponse = await sut.handle(makeFakeRequest())
     expect(httpResponse).toEqual(unauthorized())
+  })
+
+  test('should return 500 if Authentication throws', async () => {
+    const { sut, authenticationStub } = makeSut()
+    jest.spyOn(authenticationStub, 'auth').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
+
+    const httpResponse = await sut.handle(makeFakeRequest())
+    expect(httpResponse).toEqual(serverError(new Error()))
   })
 })
