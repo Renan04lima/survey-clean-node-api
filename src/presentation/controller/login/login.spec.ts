@@ -1,6 +1,10 @@
 import { Authentication } from '@/domain/usecases/authentication'
 import { InvalidParamError, MissingParamError } from '@/presentation/errors'
+<<<<<<< HEAD
 import { badRequest, serverError, unauthorized } from '@/presentation/helpers'
+=======
+import { badRequest } from '@/presentation/helpers'
+>>>>>>> 2b1b54b5ea7470c538491dcb361ebbc83162a4d3
 import { HttpRequest } from '@/presentation/protocols'
 import { EmailValidator } from '@/presentation/protocols/email-validator'
 import { LoginController } from './login'
@@ -20,6 +24,12 @@ const makeEmailValidator = (): EmailValidator => {
 
   return new EmailValidatorStub()
 }
+const makeFakeRequest = (): HttpRequest => ({
+  body: {
+    email: 'any_email@mail.com',
+    password: 'any_password'
+  }
+})
 
 const makeAuthentication = (): Authentication => {
   class AuthenticationStub implements Authentication {
