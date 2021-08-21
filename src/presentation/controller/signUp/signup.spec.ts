@@ -4,7 +4,7 @@ import { MissingParamError, InvalidParamError, ServerError } from '../../errors'
 import SignUpController from './signup'
 import { HttpRequest } from '@/presentation/protocols'
 import { badRequest, ok, serverError } from '@/presentation/helpers'
-import { Validation } from '@/presentation/helpers/validators/validation'
+import { Validation } from '@/presentation/protocols/validation'
 // NOTE - sut: Subject Under Testing
 
 const makeEmailValidator = (): EmailValidator => {

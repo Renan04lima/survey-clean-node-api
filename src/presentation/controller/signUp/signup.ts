@@ -1,4 +1,4 @@
-import { Validation } from '@/presentation/helpers/validators/validation'
+import { Validation } from '@/presentation/protocols/validation'
 import { InvalidParamError } from '../../errors'
 import { badRequest, ok, serverError } from '../../helpers'
 import { Controller, HttpRequest, HttpResponse, EmailValidator, AddAccount } from './signup-protocols'
