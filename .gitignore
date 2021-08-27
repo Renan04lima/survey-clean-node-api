@@ -4,5 +4,5 @@ dist
 .husky
 coverage
 globalConfig.json
-data
+data/**
 diagrams
