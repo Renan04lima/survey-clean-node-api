@@ -1,5 +1,5 @@
 
-import SignUpController from '../../../presentation/controller/signUp/signup-controller'
+import SignUpController from '../../../presentation/controllers/signUp/signup-controller'
 import { DbAddAccount } from '../../../data/usecases/add-account/db-add-account'
 import { BcryptAdapter } from '@/infra/criptography/bcrypt-adapter/bcrypt-adapter'
 import { AccountMongoRepository } from '@/infra/db/mongodb/account/account-mongo-repository'
