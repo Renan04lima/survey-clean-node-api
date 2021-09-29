@@ -6,25 +6,16 @@
       "esModuleInterop": true,
       "sourceMap": true, // faz o mapper entre o dist e os arquivos em ts
       "rootDirs": [
-        "src",
-        "tests"
+        "src"
       ],
       "baseUrl": "src",
       "paths": {
-        "@/tests/*": [
-          "../tests/*"
-        ],
         "@/*": [
           "*"
         ]
       }
     },
     "include": [
-      "src",
-      "tests"
-    ],
-    "exclude": [
-      "**/*.spec.ts",
-      "**/*.test.ts"
+      "src"
     ]
   }
