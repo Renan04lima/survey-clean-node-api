@@ -1,5 +1,5 @@
 import { AddSurvey } from '@/domain/usecases/add-survey'
-import { badRequest, serverError } from '@/presentation/helpers'
+import { badRequest, noContent, serverError } from '@/presentation/helpers'
 import { Controller, Validation, HttpRequest, HttpResponse } from '@/presentation/protocols'
 
 export class AddSurveyController implements Controller {
@@ -15,7 +15,8 @@ export class AddSurveyController implements Controller {
         return badRequest(error)
       }
       await this.addSurvey.add({ ...body })
-      return new Promise(resolve => resolve(null))
+
+      return noContent()
     } catch (error) {
       return serverError(error)
     }
