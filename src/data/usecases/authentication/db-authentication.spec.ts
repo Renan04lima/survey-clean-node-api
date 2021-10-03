@@ -1,10 +1,10 @@
-import { Encrypter } from "@/data/protocols/criptography/encrypt"
-import { HashComparer } from "@/data/protocols/criptography/hash-comparer"
-import { LoadAccountByEmailRepository } from "@/data/protocols/db/account/load-account-by-email-repository"
-import { UpdateAccessTokenRepository } from "@/data/protocols/db/account/update-access-token-repository"
-import { AccountModel } from "@/domain/model/account"
-import { AuthenticationModel } from "@/domain/usecases/authentication"
-import { DbAuthentication } from "./db-authentication"
+import { Encrypter } from '@/data/protocols/criptography/encrypt'
+import { HashComparer } from '@/data/protocols/criptography/hash-comparer'
+import { LoadAccountByEmailRepository } from '@/data/protocols/db/account/load-account-by-email-repository'
+import { UpdateAccessTokenRepository } from '@/data/protocols/db/account/update-access-token-repository'
+import { AccountModel } from '@/domain/model/account'
+import { AuthenticationModel } from '@/domain/usecases/authentication'
+import { DbAuthentication } from './db-authentication'
 
 const makeFakeAccount = (): AccountModel => ({
   id: 'any_id',
@@ -62,7 +62,7 @@ interface SutTypes {
   updateAccessTokenRepositoryStub: UpdateAccessTokenRepository
 }
 
-const makeSut = () =>{
+const makeSut = (): SutTypes => {
   const loadAccountByEmailRepositoryStub = makeLoadAccountByEmailRepository()
   const hashComparerStub = makeHashComparer()
   const encrypterStub = makeEncrypter()
@@ -88,7 +88,7 @@ describe('DbAuthentication UseCase', () => {
     const loadSpy = jest.spyOn(loadAccountByEmailRepositoryStub, 'loadByEmail')
     await sut.auth(makeFakeAuthentication())
     expect(loadSpy).toHaveBeenCalledWith('any_email@mail.com')
-  });
+  })
 
   test('Should throw if LoadAccountByEmailRepository throws', async () => {
     const { sut, loadAccountByEmailRepositoryStub } = makeSut()
@@ -158,4 +158,4 @@ describe('DbAuthentication UseCase', () => {
     const promise = sut.auth(makeFakeAuthentication())
     await expect(promise).rejects.toThrow()
   })
-});
+})
