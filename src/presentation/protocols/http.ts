@@ -5,5 +5,5 @@ export type HttpResponse = {
 
 export type HttpRequest = {
   body?: any
-  hearders?: any
+  headers?: any
 }
