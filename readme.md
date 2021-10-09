@@ -1,3 +1,5 @@
+[![Build Status](https://app.travis-ci.com/Renan04lima/survey-clean-node-api.svg?branch=main)](https://app.travis-ci.com/Renan04lima/survey-clean-node-api)
+[![Coverage Status](https://coveralls.io/repos/github/Renan04lima/survey-clean-node-api/badge.svg?branch=main)](https://coveralls.io/github/Renan04lima/survey-clean-node-api?branch=main)
 # **Clean Architecture Node API**
 
 Essa API faz parte do treinamento do professor Rodrigo Manguinho (Mango) na Udemy.
