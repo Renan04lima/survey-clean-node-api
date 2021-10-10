@@ -11,7 +11,8 @@ services:
       - "27017:27017"
   api:
     container_name: api_container
-    # executa o Dockerfile
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/clean-node-api
     image: node:12
     working_dir: /usr/src/clean-node-api
     # nome da imagem
