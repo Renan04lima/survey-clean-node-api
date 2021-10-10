@@ -1,4 +1,4 @@
-export interface AddSurveyModel {
+export type AddSurveyModel = {
   question: string
   answers: SurveyAnswer[]
   date: Date
