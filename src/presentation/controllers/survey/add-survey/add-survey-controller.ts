@@ -1,4 +1,4 @@
-import { AddSurvey } from '@/domain/usecases/add-survey'
+import { AddSurvey } from '@/domain/usecases/survey/add-survey'
 import { badRequest, noContent, serverError } from '@/presentation/helpers'
 import { Controller, Validation, HttpRequest, HttpResponse } from '@/presentation/protocols'
 
