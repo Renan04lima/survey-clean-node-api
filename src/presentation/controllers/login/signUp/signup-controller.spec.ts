@@ -1,18 +1,18 @@
-import { AddAccount, AddAccountModel, AccountModel } from './signup-controller-protocols'
+import { AddAccount, AddAccountParams, AccountModel } from './signup-controller-protocols'
 import { MissingParamError, ServerError } from '../../../errors'
 
 import SignUpController from './signup-controller'
 import { HttpRequest } from '@/presentation/protocols'
 import { badRequest, forbidden, ok, serverError } from '@/presentation/helpers'
 import { Validation } from '@/presentation/protocols/validation'
-import { Authentication, AuthenticationModel } from '@/domain/usecases/account/authentication'
+import { Authentication, AuthenticationParams } from '@/domain/usecases/account/authentication'
 import { EmailInUseError } from '@/presentation/errors/email-in-use-error'
 // NOTE - sut: Subject Under Testing
 
 const makeAddAccount = (): AddAccount => {
   class AddAccountStub implements AddAccount {
-    // NOTE - AddAccountModel possui alguns campos do AccountModel, porque não é recomendado usar o AccountModel com campos opcionais, já que ele faz parte do domain(regra de negócio)
-    async add(account: AddAccountModel): Promise<AccountModel> {
+    // NOTE - AddAccountParams possui alguns campos do AccountModel, porque não é recomendado usar o AccountModel com campos opcionais, já que ele faz parte do domain(regra de negócio)
+    async add(account: AddAccountParams): Promise<AccountModel> {
       return new Promise((resolve) => resolve(makeFakeAccount()))
     }
   }
@@ -21,7 +21,7 @@ const makeAddAccount = (): AddAccount => {
 
 const makeAuthentication = (): Authentication => {
   class AuthenticationStub implements Authentication {
-    async auth(authentication: AuthenticationModel): Promise<string> {
+    async auth(authentication: AuthenticationParams): Promise<string> {
       return new Promise((resolve) => resolve('any_token'))
     }
   }
