@@ -1,6 +1,6 @@
 {
   "name": "clean-architecture-node",
-  "version": "2.5.6",
+  "version": "2.5.7",
   "main": "index.js",
   "license": "MIT",
   "_moduleAliases": {
