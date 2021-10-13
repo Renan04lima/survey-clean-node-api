@@ -1,6 +1,6 @@
-import { SurveyResultModel } from '@/domain/models/survey-result'
+import { SurveyResultModel } from '@/domain/models'
 
-export interface SaveSurveyResultParams {
+export type SaveSurveyResultParams = {
   surveyId: string
   accountId: string
   answer: string

@@ -1,4 +1,4 @@
-import { SurveyModel } from '../../models/survey'
+import { SurveyModel } from '@/domain/models'
 
 export type AddSurveyParams = Omit<SurveyModel, 'id'>
 

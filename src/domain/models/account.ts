@@ -1,4 +1,3 @@
-
 export type AccountModel = {
   id: string
   name: string
