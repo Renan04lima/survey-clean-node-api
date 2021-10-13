@@ -1,21 +1,16 @@
 {
-    "compilerOptions": {
-      "outDir": "dist",
-      "module": "commonjs",
-      "target": "es2019",
-      "esModuleInterop": true,
-      "sourceMap": true, // faz o mapper entre o dist e os arquivos em ts
-      "rootDirs": [
-        "src"
-      ],
-      "baseUrl": "src",
-      "paths": {
-        "@/*": [
-          "*"
-        ]
-      }
-    },
-    "include": [
-      "src"
-    ]
-  }
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "commonjs",
+    "target": "es2020",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "rootDirs": ["src", "tests"],
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"]
+    }
+  },
+  "include": ["src", "tests"],
+  "exclude": []
+}
