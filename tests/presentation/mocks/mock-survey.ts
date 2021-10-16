@@ -1,6 +1,7 @@
-import { AddSurvey, CheckSurveyById, LoadSurveyById, LoadSurveys } from '@/domain/usecases'
+import { AddSurvey, CheckSurveyById, LoadAnswersBySurvey, LoadSurveys } from '@/domain/usecases'
 import { SurveyModel } from '@/domain/models'
-import { mockSurveyModels, mockSurveyModel } from '@/../tests/domain/mocks'
+import { mockSurveyModels } from '@/../tests/domain/mocks'
+import faker from 'faker'
 
 export class AddSurveySpy implements AddSurvey {
   addSurveyParams: AddSurvey.Params
@@ -20,13 +21,13 @@ export class LoadSurveysSpy implements LoadSurveys {
   }
 }
 
-export class LoadSurveyByIdSpy implements LoadSurveyById {
-  surveyModel = mockSurveyModel()
+export class LoadAnswersBySurveySpy implements LoadAnswersBySurvey {
+  result = [faker.datatype.string(), faker.datatype.string()]
   id: string
 
-  async loadById (id: string): Promise<SurveyModel> {
+  async loadAnswers (id: string): Promise<LoadAnswersBySurvey.Result> {
     this.id = id
-    return this.surveyModel
+    return this.result
   }
 }
 
