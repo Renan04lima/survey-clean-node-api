@@ -6,7 +6,7 @@ export default gql`
   }
 
   extend type Mutation {
-    signup (name: String!, email: String!, password: String!, passwordConfirmation: String!): Account!
+    signUp (name: String!, email: String!, password: String!, passwordConfirmation: String!): Account!
   }
 
   type Account {
